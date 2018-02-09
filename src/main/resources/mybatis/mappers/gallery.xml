@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="gallery">
+	
+	<select id="gallerylist" resultType="com.javaex.vo.GalleryVo">
+		
+		<![CDATA[
+			select galleryno,
+       			   file_size,
+       			   org_name, 
+       			   ex_name,
+       			   save_name,
+       			   file_path
+			from gallery;
+		]]>
+		
+	</select>
+	
+	<insert id="galleryinsert" parameterType="com.javaex.vo.GuestBookVo">
+	
+		<![CDATA[
+			
+			insert into guestbook
+			values (seq_guestbook_no.nextval, 
+			        #{filesize},  
+			        #{orgname}, 
+			        #{exname},  
+					#{savename},
+					#{filepath}
+					)	
+		]]>
+	
+	</insert>	
+	
+	
+</mapper>

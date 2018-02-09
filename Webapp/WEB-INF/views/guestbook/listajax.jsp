@@ -131,6 +131,7 @@ var page = 1;
 					var no = guestbookVo.no;
 					
 					selectList(no)
+					
 				},
 		
 				error : function(XHR, status, error) {
@@ -172,7 +173,7 @@ var page = 1;
 		$("#ListArea").on("click",".delajax", function(){
 			var no = $(this).data("no");
 			
-			
+			$("#message").text("");
 			$("#modalNo").val(no);
 			$("#modalPassword").val("");
 			$("#del-pop").modal();
@@ -205,11 +206,12 @@ var page = 1;
 				if(result){
 					console.log("제거 완료")
 					$("#del-pop").modal("hide");
-					window.location.reload(true)
+					//$("#gbVlist")+guestbookVo.no.remove();
 					
 				}else
 					console.log("제거 실패");
 					$("#message").text("잘못된 비밀번호 입니다.");
+					$("#message").css("color","red");
 				},
 		
 				error : function(XHR, status, error) {
@@ -225,6 +227,7 @@ var page = 1;
 function render(guestbookVo, Updown){
 	
 	var str="";
+	str +="<li id='gbVlist"+guestbookVo.no+"'></td>";
 	str += "<li>";
 	str += "	<table>";
 	str += "		<tr>";
@@ -270,7 +273,9 @@ function selectList(no){
 		/*성공시 처리해야될 코드 작성*/
 		
 		render(selectList,"up")
-		
+		$("input[name='name']").val("");
+		$("input[password='password']").val("");
+		$("textarea[name='content']").val("");
 		},
 
 		error : function(XHR, status, error) {

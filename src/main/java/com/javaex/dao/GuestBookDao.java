@@ -59,6 +59,7 @@ public class GuestBookDao {
 	public void getdeleteajax(int no) {
 		
 		int result = sqlSession.delete("guestbook.deleteajax", no);
+		System.out.println(result + "건 삭제 완료");
 	}
 	
 }
